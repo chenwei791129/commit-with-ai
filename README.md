@@ -30,7 +30,7 @@ Add to your `~/.gitconfig`:
 
 ```ini
 [alias]
-    ac = !/your-script-path/git-auto-commit/main.py
+    ac = !/your-script-path/git-auto-commit/git-auto-commit.py
 ```
 
 ## Usage
