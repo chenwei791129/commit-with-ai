@@ -35,15 +35,6 @@ Add to your `~/.gitconfig`:
 
 ## Usage
 
-### Basic Usage
-
-```bash
-git add <files>
-uv run main.py
-```
-
-### With Git Alias
-
 ```bash
 git add <files>
 git ac
