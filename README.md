@@ -8,13 +8,7 @@ Analyzes your staged git changes and generates 5 Conventional Commits-compliant 
 
 ## Setup
 
-### 1. Install Dependencies
-
-```bash
-uv sync
-```
-
-### 2. Configure API Key
+### 1. Configure API Key
 
 Set your Gemini API key as an environment variable:
 
@@ -30,7 +24,7 @@ For persistent configuration, add to your shell profile (~/.bashrc, ~/.zshrc):
 export GEMINI_API_KEY="your-api-key-here"
 ```
 
-### 3. Configure Git Alias (Optional)
+### 2. Configure Git Alias (Optional)
 
 Add to your `~/.gitconfig`:
 
