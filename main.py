@@ -1,4 +1,10 @@
-#!/usr/bin/env python3
+#!/usr/bin/env uv run
+# /// script
+# requires-python = ">=3.13"
+# dependencies = [
+#   "google-genai>=1.60.0",
+# ]
+# ///
 """Git auto-commit with AI-generated commit messages using structured JSON output."""
 
 import json

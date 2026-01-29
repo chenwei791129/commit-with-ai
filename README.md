@@ -36,7 +36,7 @@ Add to your `~/.gitconfig`:
 
 ```ini
 [alias]
-    ac = !uv run --directory /your-script-path/git-auto-commit main.py
+    ac = !/your-script-path/git-auto-commit/main.py
 ```
 
 ## Usage
