@@ -1,0 +1,22 @@
+# Changelog
+
+## [0.2.0](https://github.com/chenwei791129/git-auto-commit/compare/git-auto-commit-v0.1.0...git-auto-commit-v0.2.0) (2026-01-30)
+
+
+### Features
+
+* **cli:** enable single-character selection for menu choices ([7f3042e](https://github.com/chenwei791129/git-auto-commit/commit/7f3042e1f93ce8ee03b8f66fefa3c7b26fa666ca))
+* initial release of git-auto-commit ([135e3d9](https://github.com/chenwei791129/git-auto-commit/commit/135e3d938e4503afdb345d75e92371e34fb2cf62))
+* prepare for PyPI publication ([ba0bfcf](https://github.com/chenwei791129/git-auto-commit/commit/ba0bfcf71f80cf8548237f6ff41458a86cb1b6c6))
+
+
+### Bug Fixes
+
+* **cli:** enable arrow keys and editing in input prompts ([69f6c9e](https://github.com/chenwei791129/git-auto-commit/commit/69f6c9e1ad4d5abe6600324a0a44797d3c611867))
+* **compat:** support python 3.10 and above ([6b0fdaf](https://github.com/chenwei791129/git-auto-commit/commit/6b0fdaf3c59b4d53d13f60797fb99dc9446a4fca))
+
+
+### Documentation
+
+* remove install dependencies section from README ([18b69b9](https://github.com/chenwei791129/git-auto-commit/commit/18b69b911059bb0ee68eded13601b3ae82946ba1))
+* simplify usage section to git alias only ([51207d7](https://github.com/chenwei791129/git-auto-commit/commit/51207d740c6682227a6b3328f6f674f0ab747788))
