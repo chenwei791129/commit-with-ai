@@ -47,20 +47,17 @@ For persistent configuration, add to your shell profile (~/.bashrc, ~/.zshrc):
 export GEMINI_API_KEY="your-api-key-here"
 ```
 
-### 2. Configure Git Alias (Optional)
+### 2. Configure Git Alias
 
-Add to your `~/.gitconfig`:
+```bash
+# If installed via pip
+git config --global alias.ac '!commit-with-ai'
 
-```ini
-[alias]
-    # If installed via pip
-    ac = !commit-with-ai
+# Or if using uvx (no installation)
+git config --global alias.ac '!uvx commit-with-ai'
 
-    # Or if using uvx (no installation)
-    ac = !uvx commit-with-ai
-
-    # Or if running from source
-    ac = !/your-script-path/git-auto-commit/commit_with_ai.py
+# Or if running from source
+git config --global alias.ac '!/your-script-path/git-auto-commit/commit_with_ai.py'
 ```
 
 ## Usage
