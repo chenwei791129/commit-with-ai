@@ -15,8 +15,5 @@ jobs:
     steps:
       - uses: googleapis/release-please-action@v4
         id: release
-        # Configuration is read from release-please-config.json
-        # This will:
-        # 1. Create/update release PR
-        # 2. Create GitHub Release and tag when PR is merged
-        # 3. Trigger publish-pypi workflow via release event
+        with:
+          release-type: python
