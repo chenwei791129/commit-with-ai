@@ -9,6 +9,7 @@
 
 import json
 import os
+import readline  # noqa: F401 - Side effect import: enables readline editing in input()
 import subprocess
 import sys
 from typing import List, Dict
