@@ -12,10 +12,10 @@ Analyzes your staged git changes and generates 5 Conventional Commits-compliant 
 
 ```bash
 # Use uvx (no installation required)
-uvx git-auto-commit
+uvx commit-with-ai
 
 # Or install globally
-pip install git-auto-commit
+pip install commit-with-ai
 ```
 
 ### From Source
@@ -49,17 +49,18 @@ export GEMINI_API_KEY="your-api-key-here"
 
 ### 2. Configure Git Alias (Optional)
 
-Choose one of the following based on your installation method:
+Add to your `~/.gitconfig`:
 
-```bash
-# If installed via pip
-git config --global alias.ac '!git-auto-commit'
+```ini
+[alias]
+    # If installed via pip
+    ac = !git-auto-commit
 
-# Or if using uvx (no installation)
-git config --global alias.ac '!uvx git-auto-commit'
+    # Or if using uvx (no installation)
+    ac = !uvx git-auto-commit
 
-# Or if running from source
-git config --global alias.ac '!/your-script-path/git-auto-commit/git_auto_commit.py'
+    # Or if running from source
+    ac = !/your-script-path/git-auto-commit/git_auto_commit.py
 ```
 
 ## Usage
