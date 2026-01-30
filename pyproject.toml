@@ -38,7 +38,7 @@ Repository = "https://github.com/chenwei791129/git-auto-commit"
 Changelog = "https://github.com/chenwei791129/git-auto-commit/releases"
 
 [project.scripts]
-git-auto-commit = "git_auto_commit:main"
+commit-with-ai = "commit_with_ai:main"
 
 [project.optional-dependencies]
 dev = [
@@ -48,7 +48,7 @@ dev = [
 
 [tool.hatchling.build.targets.wheel]
 packages = ["."]
-only-include = ["git_auto_commit.py"]
+only-include = ["commit_with_ai.py"]
 
 [tool.ruff]
 line-length = 100

@@ -20,7 +20,7 @@ check: vermin check-deps ruff
 # Check Python version compatibility (code only)
 vermin:
 	@echo "Checking Python version compatibility (code only)..."
-	@uvx vermin git_auto_commit.py
+	@uvx vermin commit_with_ai.py
 	@echo ""
 
 # Check dependencies' Python version requirements
@@ -30,7 +30,7 @@ check-deps:
 # Run ruff linter
 ruff:
 	@echo "Running ruff linter..."
-	@ruff check git_auto_commit.py || { \
+	@ruff check commit_with_ai.py || { \
 		echo ""; \
 		echo "⚠️  Ruff found fixable issues. Run 'make format' to auto-fix."; \
 		exit 1; \
@@ -41,8 +41,8 @@ ruff:
 # Format code with ruff
 format:
 	@echo "Formatting code with ruff..."
-	@ruff format git_auto_commit.py
-	@ruff check --fix git_auto_commit.py
+	@ruff format commit_with_ai.py
+	@ruff check --fix commit_with_ai.py
 	@echo "✓ Code formatted!"
 
 # Build package

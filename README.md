@@ -26,7 +26,7 @@ git clone https://github.com/chenwei791129/git-auto-commit.git
 cd git-auto-commit
 
 # Run directly with uv
-uv run git_auto_commit.py
+uv run commit_with_ai.py
 ```
 
 ## Setup
@@ -54,13 +54,13 @@ Add to your `~/.gitconfig`:
 ```ini
 [alias]
     # If installed via pip
-    ac = !git-auto-commit
+    ac = !commit-with-ai
 
     # Or if using uvx (no installation)
-    ac = !uvx git-auto-commit
+    ac = !uvx commit-with-ai
 
     # Or if running from source
-    ac = !/your-script-path/git-auto-commit/git_auto_commit.py
+    ac = !/your-script-path/git-auto-commit/commit_with_ai.py
 ```
 
 ## Usage
