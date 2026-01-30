@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1](https://github.com/chenwei791129/commit-with-ai/compare/v1.0.0...v1.0.1) (2026-01-30)
+
+
+### Documentation
+
+* update repository name from git-auto-commit to commit-with-ai ([e8f2150](https://github.com/chenwei791129/commit-with-ai/commit/e8f2150ce3df5d8b240bf0509f0a58b1f8ba2e1f))
+* use bash commands for git alias setup ([4a032e8](https://github.com/chenwei791129/commit-with-ai/commit/4a032e8b0d0ac79a0313d7fb306b84b93931d29e))
+
 ## [1.0.0](https://github.com/chenwei791129/git-auto-commit/compare/v0.1.0...v1.0.0) (2026-01-30)
 
 
