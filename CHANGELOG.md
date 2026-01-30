@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.0](https://github.com/chenwei791129/git-auto-commit/compare/v0.1.0...v1.0.0) (2026-01-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* Package renamed from git-auto-commit to commit-with-ai due to PyPI naming conflict.
+
+### Features
+
+* rebrand as commit-with-ai ([1c84cc8](https://github.com/chenwei791129/git-auto-commit/commit/1c84cc8637da0f54098ff9a1998628f47a6a0e3d))
+
 ## 0.1.0 (2026-01-30)
 
 
