@@ -12,8 +12,22 @@ import os
 import readline  # noqa: F401 - Side effect import: enables readline editing in input()
 import subprocess
 import sys
+import termios
+import tty
 from typing import List, Dict
 from google import genai
+
+
+def getch() -> str:
+    """Read a single character from stdin without requiring Enter."""
+    fd = sys.stdin.fileno()
+    old_settings = termios.tcgetattr(fd)
+    try:
+        tty.setraw(fd)
+        ch = sys.stdin.read(1)
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+    return ch
 
 
 def run_command(cmd: List[str], check: bool = True) -> subprocess.CompletedProcess:
@@ -122,25 +136,37 @@ def display_menu(messages: List[Dict[str, str]]) -> None:
 
 def get_user_selection(messages: List[Dict[str, str]]) -> str:
     """Get user's commit message selection."""
+    print("\nEnter selection [1-7]: ", end="", flush=True)
+
     while True:
         try:
-            choice = input("\nEnter selection [1-7]: ").strip()
+            choice = getch()
+
+            # Handle Ctrl+C
+            if choice == "\x03":
+                print("\nCommit cancelled.")
+                sys.exit(0)
 
             if choice == "7":
+                print(choice)
                 print("Commit cancelled.")
                 sys.exit(0)
             elif choice == "6":
+                print(choice)
                 custom_msg = input("Enter custom commit message: ").strip()
                 if custom_msg:
                     return custom_msg
                 else:
                     print("❌ Commit message cannot be empty.")
+                    print("Enter selection [1-7]: ", end="", flush=True)
                     continue
             elif choice in ["1", "2", "3", "4", "5"]:
+                print(choice)
                 idx = int(choice) - 1
                 return messages[idx]["full_message"]
             else:
-                print("❌ Invalid selection. Please enter 1-7.")
+                # Invalid input, continue waiting for valid input
+                continue
         except (ValueError, KeyboardInterrupt):
             print("\nCommit cancelled.")
             sys.exit(0)
