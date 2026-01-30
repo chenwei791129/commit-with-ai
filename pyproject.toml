@@ -1,0 +1,56 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "git-auto-commit"
+version = "0.1.0"
+description = "AI-powered git commit message generator using Gemini API"
+readme = "README.md"
+requires-python = ">=3.13"
+license = {text = "MIT"}
+authors = [
+    {name = "Chen-Wei Sun", email = "chenwei791129@livemail.tw"}
+]
+keywords = ["git", "commit", "ai", "gemini", "cli", "conventional-commits"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Version Control :: Git",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "google-genai>=1.60.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/chenwei791129/git-auto-commit"
+Repository = "https://github.com/chenwei791129/git-auto-commit"
+"Bug Tracker" = "https://github.com/chenwei791129/git-auto-commit/issues"
+Changelog = "https://github.com/chenwei791129/git-auto-commit/releases"
+
+[project.scripts]
+git-auto-commit = "git_auto_commit:main"
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.8.0",
+    "pytest>=8.0.0",
+]
+
+[tool.hatchling.build.targets.wheel]
+packages = ["."]
+only-include = ["git_auto_commit.py"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "A", "C4", "SIM"]
+ignore = ["E501"]

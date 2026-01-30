@@ -6,6 +6,29 @@ AI-powered git commit message generator using Gemini API's structured JSON outpu
 
 Analyzes your staged git changes and generates 5 Conventional Commits-compliant commit message suggestions using Gemini AI. Select one or enter your own.
 
+## Installation
+
+### Via PyPI (Recommended)
+
+```bash
+# Use uvx (no installation required)
+uvx git-auto-commit
+
+# Or install globally
+pip install git-auto-commit
+```
+
+### From Source
+
+```bash
+# Clone the repository
+git clone https://github.com/chenwei791129/git-auto-commit.git
+cd git-auto-commit
+
+# Run directly with uv
+uv run git_auto_commit.py
+```
+
 ## Setup
 
 ### 1. Configure API Key
@@ -26,11 +49,17 @@ export GEMINI_API_KEY="your-api-key-here"
 
 ### 2. Configure Git Alias (Optional)
 
-Add to your `~/.gitconfig`:
+Choose one of the following based on your installation method:
 
-```ini
-[alias]
-    ac = !/your-script-path/git-auto-commit/git-auto-commit.py
+```bash
+# If installed via pip
+git config --global alias.ac '!git-auto-commit'
+
+# Or if using uvx (no installation)
+git config --global alias.ac '!uvx git-auto-commit'
+
+# Or if running from source
+git config --global alias.ac '!/your-script-path/git-auto-commit/git_auto_commit.py'
 ```
 
 ## Usage
