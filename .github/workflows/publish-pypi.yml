@@ -21,6 +21,9 @@ jobs:
           ref: main
           fetch-depth: 0  # Fetch all history for tags
 
+      - name: Fetch tags
+        run: git fetch --tags --force
+
       - name: Check if release was created
         id: check_release
         run: |
