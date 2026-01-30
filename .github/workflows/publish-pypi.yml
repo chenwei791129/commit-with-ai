@@ -1,8 +1,10 @@
 name: Publish to PyPI
 
 on:
-  release:
-    types: [published]
+  workflow_run:
+    workflows: ["Release Please"]
+    types: [completed]
+    branches: [main]
 
 permissions:
   contents: read
@@ -10,18 +12,40 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    # Only run if release-please succeeded and created a release
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Check if release was created
+        id: check_release
+        run: |
+          # Get latest release tag
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -z "$LATEST_TAG" ]; then
+            echo "No release found, skipping publish"
+            echo "should_publish=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          echo "Latest tag: $LATEST_TAG"
+          echo "should_publish=true" >> $GITHUB_OUTPUT
+          echo "release_tag=$LATEST_TAG" >> $GITHUB_OUTPUT
 
       - name: Setup uv
+        if: steps.check_release.outputs.should_publish == 'true'
         uses: astral-sh/setup-uv@v4
         with:
           enable-cache: true
 
       - name: Verify version matches tag
+        if: steps.check_release.outputs.should_publish == 'true'
         run: |
-          TAG_VERSION="${GITHUB_REF#refs/tags/v}"
+          # Extract version from tag (git-auto-commit-v0.2.0 -> 0.2.0)
+          TAG_VERSION="${{ steps.check_release.outputs.release_tag }}"
+          TAG_VERSION="${TAG_VERSION#*-v}"  # Remove prefix before -v
           PACKAGE_VERSION=$(grep '^version = ' pyproject.toml | sed 's/version = "\(.*\)"/\1/')
           if [ "$TAG_VERSION" != "$PACKAGE_VERSION" ]; then
             echo "Error: Tag version ($TAG_VERSION) does not match package version ($PACKAGE_VERSION)"
@@ -30,9 +54,11 @@ jobs:
           echo "✓ Version check passed: $TAG_VERSION"
 
       - name: Build package
+        if: steps.check_release.outputs.should_publish == 'true'
         run: uv build
 
       - name: Verify build artifacts
+        if: steps.check_release.outputs.should_publish == 'true'
         run: |
           ls -lh dist/
           if [ ! -f dist/*.whl ] || [ ! -f dist/*.tar.gz ]; then
@@ -42,11 +68,13 @@ jobs:
           echo "✓ Build artifacts verified"
 
       - name: Publish to PyPI
+        if: steps.check_release.outputs.should_publish == 'true'
         env:
           UV_PUBLISH_TOKEN: ${{ secrets.PYPI_TOKEN }}
         run: uv publish
 
       - name: Upload build artifacts to release
+        if: steps.check_release.outputs.should_publish == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: python-package-distributions
