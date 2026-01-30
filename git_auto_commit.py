@@ -1,6 +1,6 @@
 #!/usr/bin/env uv run
 # /// script
-# requires-python = ">=3.13"
+# requires-python = ">=3.10"
 # dependencies = [
 #   "google-genai>=1.60.0",
 # ]
@@ -14,7 +14,7 @@ import subprocess
 import sys
 import termios
 import tty
-from typing import List, Dict
+
 from google import genai
 
 
@@ -30,7 +30,7 @@ def getch() -> str:
     return ch
 
 
-def run_command(cmd: List[str], check: bool = True) -> subprocess.CompletedProcess:
+def run_command(cmd: list[str], check: bool = True) -> subprocess.CompletedProcess:
     """Run a shell command and return the result."""
     result = subprocess.run(cmd, capture_output=True, text=True, check=False)
 
@@ -54,7 +54,7 @@ def get_staged_diff() -> str:
     return result.stdout
 
 
-def generate_commit_messages(diff_content: str) -> List[Dict[str, str]]:
+def generate_commit_messages(diff_content: str) -> list[dict[str, str]]:
     """Generate commit messages using Gemini API with structured JSON output."""
     client = genai.Client()
 
@@ -117,7 +117,7 @@ Each object should have: type, scope (empty string if N/A), description, and ful
         sys.exit(1)
 
 
-def display_menu(messages: List[Dict[str, str]]) -> None:
+def display_menu(messages: list[dict[str, str]]) -> None:
     """Display commit message options."""
     print("\n" + "=" * 70)
     print("Select a commit message:")
@@ -134,7 +134,7 @@ def display_menu(messages: List[Dict[str, str]]) -> None:
     print("=" * 70)
 
 
-def get_user_selection(messages: List[Dict[str, str]]) -> str:
+def get_user_selection(messages: list[dict[str, str]]) -> str:
     """Get user's commit message selection."""
     print("\nEnter selection [1-7]: ", end="", flush=True)
 
