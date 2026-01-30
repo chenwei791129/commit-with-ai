@@ -32,10 +32,10 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/chenwei791129/git-auto-commit"
-Repository = "https://github.com/chenwei791129/git-auto-commit"
-"Bug Tracker" = "https://github.com/chenwei791129/git-auto-commit/issues"
-Changelog = "https://github.com/chenwei791129/git-auto-commit/releases"
+Homepage = "https://github.com/chenwei791129/commit-with-ai"
+Repository = "https://github.com/chenwei791129/commit-with-ai"
+"Bug Tracker" = "https://github.com/chenwei791129/commit-with-ai/issues"
+Changelog = "https://github.com/chenwei791129/commit-with-ai/releases"
 
 [project.scripts]
 commit-with-ai = "commit_with_ai:main"

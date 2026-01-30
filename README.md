@@ -22,8 +22,8 @@ pip install commit-with-ai
 
 ```bash
 # Clone the repository
-git clone https://github.com/chenwei791129/git-auto-commit.git
-cd git-auto-commit
+git clone https://github.com/chenwei791129/commit-with-ai.git
+cd commit-with-ai
 
 # Run directly with uv
 uv run commit_with_ai.py
@@ -57,7 +57,7 @@ git config --global alias.ac '!commit-with-ai'
 git config --global alias.ac '!uvx commit-with-ai'
 
 # Or if running from source
-git config --global alias.ac '!/your-script-path/git-auto-commit/commit_with_ai.py'
+git config --global alias.ac '!/your-script-path/commit-with-ai/commit_with_ai.py'
 ```
 
 ## Usage
