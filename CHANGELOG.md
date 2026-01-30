@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.1](https://github.com/chenwei791129/git-auto-commit/compare/git-auto-commit-v0.2.0...git-auto-commit-v0.2.1) (2026-01-30)
+
+
+### Bug Fixes
+
+* **ci:** fetch tags in publish workflow ([fe6593b](https://github.com/chenwei791129/git-auto-commit/commit/fe6593b7c6136f5f897e53b52531a9a23ad40ec7))
+* **ci:** use workflow_run trigger for PyPI publish ([ea4aa96](https://github.com/chenwei791129/git-auto-commit/commit/ea4aa96947783073251f22bd08506c0c3336594a))
+
 ## [0.2.0](https://github.com/chenwei791129/git-auto-commit/compare/git-auto-commit-v0.1.0...git-auto-commit-v0.2.0) (2026-01-30)
 
 
