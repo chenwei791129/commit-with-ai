@@ -142,6 +142,7 @@ Enter selection [1-7]:
 
 ## Resources
 
+- [PyPI Package](https://pypi.org/project/commit-with-ai/)
 - [Conventional Commits](https://www.conventionalcommits.org/)
 - [Gemini API Documentation](https://ai.google.dev/gemini-api/docs)
 - [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code)
