@@ -5,14 +5,14 @@ build-backend = "hatchling.build"
 [project]
 name = "commit-with-ai"
 version = "1.0.1"
-description = "AI-powered git commit message generator using Gemini API"
+description = "AI-powered git commit message generator supporting multiple providers (Gemini, Claude)"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [
     {name = "Chen-Wei Sun", email = "chenwei791129@livemail.tw"}
 ]
-keywords = ["git", "commit", "ai", "gemini", "cli", "conventional-commits"]
+keywords = ["git", "commit", "ai", "gemini", "claude", "cli", "conventional-commits"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Console",
@@ -38,7 +38,7 @@ Repository = "https://github.com/chenwei791129/commit-with-ai"
 Changelog = "https://github.com/chenwei791129/commit-with-ai/releases"
 
 [project.scripts]
-commit-with-ai = "commit_with_ai:main"
+commit-with-ai = "commit_with_ai.__main__:main"
 
 [project.optional-dependencies]
 dev = [
@@ -47,8 +47,7 @@ dev = [
 ]
 
 [tool.hatchling.build.targets.wheel]
-packages = ["."]
-only-include = ["commit_with_ai.py"]
+packages = ["commit_with_ai"]
 
 [tool.ruff]
 line-length = 100
