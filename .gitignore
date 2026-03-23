@@ -21,3 +21,7 @@ dist/
 
 # macOS
 .DS_Store
+
+# Spectra app data
+.spectra/
+openspec/.vector-search.db*
