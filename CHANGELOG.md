@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.0](https://github.com/chenwei791129/commit-with-ai/compare/v1.0.1...v1.1.0) (2026-03-23)
+
+
+### Features
+
+* add Claude CLI provider via subprocess invocation ([c2e22ba](https://github.com/chenwei791129/commit-with-ai/commit/c2e22bab26f364f35fc0a2aca50ef1372c88d911)), closes [#8](https://github.com/chenwei791129/commit-with-ai/issues/8)
+
+
+### Documentation
+
+* add CLAUDE.md and AGENTS.md project instructions ([75974d7](https://github.com/chenwei791129/commit-with-ai/commit/75974d7c669e4e8f3ecee6f772a84bface972808))
+* add PyPI package link to README resources ([449dda2](https://github.com/chenwei791129/commit-with-ai/commit/449dda20d63b3c578d5aed27d3f4de9ca3cee171))
+* update README for multi-provider support and archive Spectra change ([226135d](https://github.com/chenwei791129/commit-with-ai/commit/226135d17e8aaa1dc0e6c9e01d3088401168df80))
+
 ## [1.0.1](https://github.com/chenwei791129/commit-with-ai/compare/v1.0.0...v1.0.1) (2026-01-30)
 
 
