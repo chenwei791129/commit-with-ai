@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/chenwei791129/commit-with-ai/compare/v1.1.0...v1.2.0) (2026-03-24)
+
+
+### Features
+
+* **claude-cli:** use stdin for prompt and add --no-session-persistence flag ([246d1ae](https://github.com/chenwei791129/commit-with-ai/commit/246d1aed64e608b78466dfb562759cb9a1938a9b))
+
+
+### Documentation
+
+* update claude-cli-provider spec and archive optimize-cli-invocation change ([ca9ea1c](https://github.com/chenwei791129/commit-with-ai/commit/ca9ea1c91f031d61d4df679fa21c676150c963e9))
+
 ## [1.1.0](https://github.com/chenwei791129/commit-with-ai/compare/v1.0.1...v1.1.0) (2026-03-23)
 
 
