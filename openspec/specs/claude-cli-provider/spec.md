@@ -50,12 +50,13 @@ tests:
 ---
 ### Requirement: Commit message generation via subprocess
 
-The Claude CLI provider SHALL invoke `claude -p` with `--output-format json` and `--json-schema` flags to generate structured commit messages.
+The Claude CLI provider SHALL invoke `claude -p` with `--no-session-persistence`, `--output-format json`, and `--json-schema` flags to generate structured commit messages.
+The prompt SHALL be passed via stdin (standard input) instead of as a positional command-line argument.
 The prompt MUST include the git diff content and request exactly 5 conventional commit messages.
 
 #### Scenario: Successful generation
 
-- **WHEN** `claude -p` is invoked with a valid diff and JSON schema
+- **WHEN** `claude -p` is invoked with `--no-session-persistence`, a valid diff via stdin, and JSON schema
 - **THEN** the subprocess returns a JSON response containing exactly 5 commit message objects
 
 #### Scenario: Claude CLI returns non-zero exit code
@@ -65,27 +66,12 @@ The prompt MUST include the git diff content and request exactly 5 conventional 
 
 
 <!-- @trace
-source: add-claude-cli-provider
-updated: 2026-03-23
+source: optimize-cli-invocation
+updated: 2026-03-24
 code:
-  - commit_with_ai/providers/base.py
-  - commit_with_ai/providers/gemini.py
-  - commit_with_ai.py
-  - tests/__init__.py
   - commit_with_ai/providers/claude_cli.py
   - uv.lock
-  - commit_with_ai/providers/__init__.py
-  - commit_with_ai/core.py
-  - commit_with_ai/__init__.py
-  - pyproject.toml
-  - commit_with_ai/__main__.py
-  - README.md
-  - scripts/poc_claude_cli.py
 tests:
-  - tests/test_providers_gemini.py
-  - tests/test_core.py
-  - tests/test_providers_base.py
-  - tests/test_cli.py
   - tests/test_providers_claude_cli.py
 -->
 
