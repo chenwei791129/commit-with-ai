@@ -50,6 +50,72 @@ class TestClaudeCliGenerateMessages:
         ):
             return ClaudeCliProvider()
 
+    def test_subprocess_includes_no_session_persistence_flag(self):
+        provider = self._make_provider()
+        cli_output = json.dumps(
+            {
+                "type": "result",
+                "subtype": "success",
+                "result": "",
+                "structured_output": {
+                    "messages": [
+                        {
+                            "type": "feat",
+                            "scope": "",
+                            "description": f"change {i}",
+                            "full_message": f"feat: change {i}",
+                        }
+                        for i in range(5)
+                    ]
+                },
+            }
+        )
+
+        with patch("commit_with_ai.providers.claude_cli.subprocess.run") as mock_run:
+            mock_run.return_value = subprocess.CompletedProcess(
+                args=[], returncode=0, stdout=cli_output, stderr=""
+            )
+            provider.generate_commit_messages("diff content")
+
+        args_list = mock_run.call_args[0][0]
+        assert "--no-session-persistence" in args_list
+
+    def test_prompt_passed_via_stdin_not_positional_arg(self):
+        provider = self._make_provider()
+        cli_output = json.dumps(
+            {
+                "type": "result",
+                "subtype": "success",
+                "result": "",
+                "structured_output": {
+                    "messages": [
+                        {
+                            "type": "feat",
+                            "scope": "",
+                            "description": f"change {i}",
+                            "full_message": f"feat: change {i}",
+                        }
+                        for i in range(5)
+                    ]
+                },
+            }
+        )
+
+        with patch("commit_with_ai.providers.claude_cli.subprocess.run") as mock_run:
+            mock_run.return_value = subprocess.CompletedProcess(
+                args=[], returncode=0, stdout=cli_output, stderr=""
+            )
+            provider.generate_commit_messages("diff content")
+
+        # Prompt should be passed via input kwarg, not as positional arg
+        kwargs = mock_run.call_args[1]
+        assert "input" in kwargs
+        assert "diff content" in kwargs["input"]
+        # Prompt should not appear in the command args list
+        args_list = mock_run.call_args[0][0]
+        for arg in args_list:
+            assert "diff content" not in arg
+
     def test_successful_generation(self):
         provider = self._make_provider()
         messages_data = {
